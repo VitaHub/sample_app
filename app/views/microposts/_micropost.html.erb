@@ -2,7 +2,10 @@
   <%= link_to gravatar_for(micropost.user), micropost.user %>
   <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
   <span class="content"><%= micropost.content %>
-  <%= image_tag micropost.picture.url if micropost.picture? %></span>
+  <a id="single_image" href="<%= micropost.picture.url if micropost.picture? %>">
+    <%= image_tag micropost.picture.url, class: 'image_content' if micropost.picture? %>
+  </a>  
+  </span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(micropost.created_at) %> ago.
     <% if current_user?(micropost.user) %>
@@ -11,3 +14,15 @@
     <% end %>
   </span>
 </li>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("a#single_image").fancybox();
+	});
+</script>
+
+<style>
+  .image_content {
+    height: 300px;
+  }
+</style>

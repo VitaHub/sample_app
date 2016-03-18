@@ -18,6 +18,14 @@ User.create!(name:  "Example User",
                activated_at: Time.zone.now)
 end
 
+User.create!(name:  "Vitalii Hubenko",
+             email: "z_best92@mail.ru",
+             password:              "kr1m1nal",
+             password_confirmation: "kr1m1nal",
+             admin: true,
+             activated: true,
+             activated_at: Time.zone.now)
+
 users = User.order(:created_at).take(6)
 50.times do
   content = Faker::Lorem.sentence(5)
